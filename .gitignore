@@ -1,0 +1,27 @@
+# Local dependencies and caches
+node_modules/
+__pycache__/
+*.pyc
+
+# Private hosting identity and runtime state
+.openai/
+.sites-runtime/
+.sites-checkout*/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local application backups and archives
+muzna-internship-tracker-2027*.json
+*.zip
+*.tar.gz
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,13 @@
+{
+  "name": "m2-dkai-internship-tracker-2027",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A browser-local internship search tracker for the M2 DKAI six-month internship.",
+  "scripts": {
+    "test": "node --test tests/core.test.cjs tests/interactions.test.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}
