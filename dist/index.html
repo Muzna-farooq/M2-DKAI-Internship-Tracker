@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Muzna’s private workspace for her M2 DKAI six-month internship search in 2027.">
+<meta name="theme-color" content="#173c34">
+<title>2027 Internship Tracker · Muzna</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23173c34'/%3E%3Cpath d='m16 45 13-29 7 20 12-16' fill='none' stroke='%23c9f2da' stroke-width='5'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./styles.css">
+<script defer src="./core.js"></script><script defer src="./seed.js"></script><script defer src="./app.js"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+<a class="brand" href="./" aria-label="Internship tracker home"><span class="brand-mark">m<span>↗</span></span><span>next chapter<small>MUZNA’S WORKSPACE</small></span></a>
+<div class="sidebar-label">MY SEARCH</div>
+<nav aria-label="Workspace navigation"><button class="nav-item active" data-view="opportunities"><span aria-hidden="true">▦</span> Opportunities <span class="nav-count" id="nav-count">0</span></button><button class="nav-item" data-view="deadlines"><span aria-hidden="true">◷</span> Deadlines <span class="tiny-dot"></span></button></nav>
+<div class="sidebar-target"><div class="target-symbol" aria-hidden="true">↗</div><p>ONE GOOD FIT.<br>A NEW BEGINNING.</p><span>2027 internship search</span><div class="target-rule"></div><dl><div><dt>Preferred start</dt><dd>April 2027</dd></div><div><dt>Duration</dt><dd>6 months</dd></div><div><dt>Programme</dt><dd>M2 DKAI · 30 ECTS</dd></div></dl></div>
+<div class="sidebar-footer"><div class="avatar">MF</div><div><strong>Muzna Farooq</strong><small>Université Paris-Saclay</small></div></div>
+</aside>
+<main>
+<header class="topbar"><span class="breadcrumb">My workspace <span>/</span> Internship search</span><span class="private-badge"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 7V4.5a3.5 3.5 0 0 1 7 0V7M3 7h10v7H3z"/></svg>Private · Only you</span></header>
+<div class="main-content">
+<section class="page-heading"><div><div class="eyebrow">M2 DKAI · CLASS OF 2027</div><h1>Your next chapter in AI<span>.</span></h1><p>A focused workspace for your six-month internship search.</p></div><button id="add-btn" class="primary-button"><span aria-hidden="true">＋</span> Add opportunity</button></section>
+<div class="search-context"><span class="context-icon" aria-hidden="true">◎</span><span><strong>Your direction</strong> Machine Learning <i>·</i> NLP <i>·</i> Frugal AI <i>·</i> Hybrid AI</span><span class="context-end">April 2027 preferred <i>·</i> 6 months</span></div>
+<div id="storage-warning" class="warning" role="alert" hidden></div>
+<section class="metrics" aria-label="Application progress summary" id="metrics"></section>
+<section class="pipeline-panel"><div class="pipeline-heading"><div><h2>Application progress</h2><span>Small steps, steady progress.</span></div><span id="progress-caption"></span></div><div class="pipeline-track" id="pipeline-track" aria-hidden="true"></div><div class="pipeline-legend" id="pipeline-legend"></div></section>
+<section class="opportunities-panel" aria-label="Internship opportunities">
+<div class="panel-heading"><div class="view-tabs" role="tablist" aria-label="Tracker view"><button role="tab" aria-selected="true" class="view-tab active" id="opportunities-tab" data-view="opportunities">Opportunities <span id="all-count">0</span></button><button role="tab" aria-selected="false" class="view-tab" id="deadlines-tab" data-view="deadlines">Deadline view</button></div><div class="data-actions"><button id="export-btn" class="text-button" title="Download a backup of your opportunities">↧ Export backup</button><button id="import-btn" class="text-button">↥ Import</button><input type="file" id="import-file" accept="application/json,.json" hidden></div></div>
+<div class="filters"><div class="search-field"><span aria-hidden="true">⌕</span><input id="search" type="search" aria-label="Search opportunities" placeholder="Search a role, host, or next action…"></div><label class="filter-select"><span>Fit</span><select id="fit-filter" aria-label="Filter by fit"><option value="">All fits</option><option>High</option><option>Medium</option><option>Low</option><option>Unknown</option></select></label><label class="filter-select"><span>Location</span><select id="location-filter" aria-label="Filter by location"><option value="">All locations</option></select></label><label class="filter-select"><span>Research</span><select id="area-filter" aria-label="Filter by research area"><option value="">All areas</option></select></label><label class="filter-select"><span>Status</span><select id="status-filter" aria-label="Filter by application status"><option value="">All statuses</option></select></label></div>
+<div class="results-toolbar"><span id="result-count" aria-live="polite"></span><button id="clear-filters" class="text-button" hidden>Clear filters</button><div class="sort-control"><label for="sort">Sort by</label><select id="sort"><option value="fit">Best fit first</option><option value="deadline-asc">Deadline · earliest</option><option value="deadline-desc">Deadline · latest</option><option value="employer">Employer · A–Z</option><option value="updated">Recently updated</option></select></div></div>
+<div class="table-wrapper"><table><thead><tr><th scope="col">Opportunity / host</th><th scope="col">Location / research</th><th scope="col">Fit</th><th scope="col"><button id="deadline-sort" class="table-sort">Deadline <span id="deadline-arrow">↕</span></button></th><th scope="col">Application / documents</th><th scope="col">Next action</th><th scope="col"><span class="sr-only">Edit</span></th></tr></thead><tbody id="opportunity-rows"></tbody></table><div id="empty-state" class="empty-state" hidden><span aria-hidden="true">⌕</span><h3>No opportunities found</h3><p>Try adjusting your filters, or add a new lead.</p><button id="empty-clear" class="secondary-button">Clear filters</button></div></div>
+<div class="panel-footnote"><span id="dataset-caption">Leads from your earlier discussions. Openings and dates need confirmation.</span><span><span class="saved-dot"></span><span id="save-state">Saved in this browser</span></span></div>
+</section>
+<footer class="page-footer"><span>Built for your M2 DKAI journey.</span><span>Local edits stay on this browser and device. Export a backup to move them.</span></footer>
+</div>
+</main>
+</div>
+<dialog id="editor" aria-labelledby="editor-title"><form id="opportunity-form"><header class="dialog-header"><div><div class="eyebrow">YOUR SEARCH, YOUR PACE</div><h2 id="editor-title">Add opportunity</h2></div><button type="button" class="icon-button close-dialog" aria-label="Close editor">×</button></header><div class="dialog-body"><p class="form-note">Keep unknown dates blank. Your target is April 2027 for six months; the host’s terms may differ.</p><input type="hidden" name="id"><div class="form-grid">
+<label>Employer or host <span class="required">*</span><input name="employer" autofocus required maxlength="160" placeholder="e.g. University of Luxembourg"></label>
+<label>Project or role title <span class="required">*</span><input name="title" required maxlength="240" placeholder="e.g. Research internship in NLP"></label>
+<label>Location<input name="location" maxlength="160" placeholder="City, country · or To confirm"></label>
+<label>Fit with your interests<select name="fit"><option>High</option><option>Medium</option><option>Low</option><option selected>Unknown</option></select></label>
+<label>Preferred start<input name="preferredStart" maxlength="120" placeholder="April 2027 preferred"></label>
+<label>Host’s start timing<input name="hostStart" maxlength="160" placeholder="To confirm"></label>
+<label>Duration / host terms<input name="duration" maxlength="120" placeholder="6 months · or To confirm"></label>
+<label>Application deadline<input type="date" name="deadline"><small>Leave blank if the host has not confirmed a date.</small></label>
+<label>Application status<select name="status"></select></label>
+<label>M2 / 30 ECTS approval<select name="approval"><option>To confirm</option><option>Approved</option><option>Not eligible</option></select></label>
+<label class="full-width">Research areas <input name="areas" maxlength="300" placeholder="ML, NLP, Frugal AI, Hybrid AI"><small>Separate areas with commas. Use “To confirm” for an unspecified project.</small></label>
+<label class="full-width">Why it fits<textarea name="fitReason" rows="2" maxlength="1600" placeholder="Connect the project to your interests and experience."></textarea></label>
+<label class="full-width">Next action<input name="nextAction" maxlength="500" placeholder="e.g. Confirm start date and six-month duration"></label>
+<label class="full-width">Opportunity link<input name="url" type="url" maxlength="1000" placeholder="https://…"><small>For your reference. Opening a link will not submit an application.</small></label>
+</div>
+<fieldset class="documents-fieldset"><legend>Application documents</legend><p>Track preparation separately from submission.</p><div id="document-fields" class="document-grid"></div></fieldset>
+<label class="notes-label">Source / notes<textarea name="notes" rows="3" maxlength="3000" placeholder="Where you found it, details to confirm, or follow-up notes."></textarea></label><div id="form-error" class="warning" role="alert" hidden></div>
+</div><footer class="dialog-footer"><button type="button" id="delete-btn" class="danger-button" hidden>Delete opportunity</button><div><button type="button" class="secondary-button close-dialog">Cancel</button><button type="submit" class="primary-button">Save opportunity</button></div></footer></form></dialog>
+<dialog id="details" aria-labelledby="details-title"><header class="dialog-header"><div><div class="eyebrow" id="details-host"></div><h2 id="details-title"></h2></div><button class="icon-button close-details" aria-label="Close details">×</button></header><div id="details-body" class="dialog-body"></div><footer class="dialog-footer"><span class="muted">Details saved locally in this browser.</span><button id="details-edit" class="primary-button">Edit opportunity</button></footer></dialog>
+<dialog id="confirm-dialog" aria-labelledby="confirm-title"><div class="confirm-body"><h2 id="confirm-title"></h2><p id="confirm-message"></p><div><button id="confirm-cancel" class="secondary-button">Cancel</button><button id="confirm-accept" class="primary-button">Confirm</button></div></div></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body></html>
